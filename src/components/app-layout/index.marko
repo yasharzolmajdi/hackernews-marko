@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Marko Hackernews"/>
+    <title>Marko - Hacker News</title>
+  </head>
+  <body>
+    <header class="header bg-yellow-600">
+      <nav class="inner py-2 px-4 w-full flex">
+        <a href="/" class="font-bold">HN</a>
+        <div class="flex-1 flex px-4 mr-2">
+          <a href="/new" class="flex-grow text-center">New</a>
+          <a href="/show" class="flex-grow text-center">Show</a>
+          <a href="/ask" class="flex-grow text-center">Ask</a>
+          <a href="/job" class="flex-grow text-center">Jobs</a>
+        </div>
+        <a
+          class="github"
+          href="http://github.com/marko-js/marko"
+          target="_blank"
+          rel="noreferrer">
+          About
+        </a>
+      </nav>
+    </header>
+    <${input.renderBody}/>
+  </body>
+</html>

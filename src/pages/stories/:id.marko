@@ -1,0 +1,34 @@
+import { getStory } from "../../lib/api"
+
+<app-layout>
+  <await(getStory(input.params.id)) client-reorder>
+    <@then|story|>
+      <div class="flex flex-col p-4">
+        <div class="border-b pb-4">
+          <a href=story.url target="_blank" class="text-2xl font-bold">
+            <h1>${story.title}</h1>
+          </a>
+          <p class="text-xs mt-2">
+            ${story.points} points | by
+            <a class="text-indigo-500 hover:text-indigo-600" href=`users/${story.user}`>
+              ${story.user}
+            </a> 
+            ${story.time_ago} ago
+          </p>
+        </div>
+        <div class="pt-2">
+          <p class="text-sm pb-2">
+            ${story.comments_count
+            ? story.comments_count + " comments"
+            : "No comments yet."}
+          </p>
+          <ul class="flex flex-col space-y-4">
+            <for|comment| of=story.comments>
+              <comment comment=comment/>
+            </for>
+          </ul>
+        </div>
+      </div>
+    </@then>
+  </await>
+</app-layout>

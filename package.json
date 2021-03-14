@@ -1,0 +1,23 @@
+{
+  "name": "hackernews-marko",
+  "description": "The default Marko starter app",
+  "version": "1.0.0",
+  "dependencies": {
+    "marko": "^5",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@marko/build": "^4",
+    "@marko/serve": "^4",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.8",
+    "purgecss": "^4.0.2",
+    "tailwindcss": "^2.0.3"
+  },
+  "private": true,
+  "scripts": {
+    "build": "marko-build ./src/pages",
+    "dev": "marko-serve ./src/pages",
+    "start": "NODE_ENV=production node ./build/index.js"
+  }
+}

@@ -1,0 +1,48 @@
+<li class="bg-white border rounded-md shadow-md flex overlow-hidden relative h-auto">
+  <div class="h-auto bg-gray-100 flex justify-center items-center w-8">
+    ${input.story.points}
+  </div>
+  <div class="flex-shrink flex-1 px-4 py-2">
+    <div class="mb-1">
+      <span class="font-medium">
+        <if(input.story.url)>
+          <a href=input.story.url target="_blank" rel="noreferrer">
+            ${input.story.title}
+          </a>
+          <span class="host">(${input.story.domain})</span>
+        </if>
+        <else>
+          <a href=`item/${input.story.id}`>${input.story.title}</a>
+        </else>
+      </span>
+    </div>
+    <span class="meta text-xs">
+      <if(input.story.type !== "job")>
+        by
+        <a
+          class="text-indigo-500 hover:text-indigo-600"
+          href=`users/${input.story.user}`>
+          ${input.story.user}
+        </a> 
+        ${input.story.time_ago} |
+        <a
+          class="text-indigo-500 hover:text-indigo-600"
+          href=`stories/${input.story.id}`>
+          ${input.story.comments_count
+          ? `${input.story.comments_count} comments`
+          : "discuss"}
+        </a>
+      </if>
+      <else>
+        <a
+          class="text-indigo-500 hover:text-indigo-600"
+          href=`stories/${input.story.id}`>
+          ${input.story.time_ago}
+        </a>
+      </else>
+    </span>
+    <if(input.story.type !== "link")>
+      <span class="label">${input.story.type}</span>
+    </if>
+  </div>
+</li>

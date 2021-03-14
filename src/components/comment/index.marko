@@ -1,0 +1,43 @@
+static function pluralize(n) {
+  return n + (n === 1 ? " reply" : " replies");
+}
+
+class {
+  onCreate() {
+    this.state = { open: true };
+  }
+  toggleOpen() {
+    this.state.open = !this.state.open;
+  }
+}
+
+<li class=`bg-gray-50 w-full max-w-screen overflow-hidden border rounded-md pl-2 py-2 ${!input.child &&
+  "shadow-md"}`>
+  <div class="text-xs mb-2">
+    <a
+      class="text-indigo-500 hover:text-indigo-60"
+      href=`users/${input.comment.user}`>
+      ${input.comment.user}
+    </a> 
+    ${input.comment.time_ago} ago
+  </div>
+  <div class="text-base mb-2">$!{input.comment.content}</div>
+  <div class="flex flex-col">
+    <if(input.comment.comments.length)>
+      <div class=`mb-2 ${state.open ? "open" : ""}`>
+        <a onclick("toggleOpen")>
+          ${state.open
+          ? "[-]"
+          : "[+] " + pluralize(input.comment.comments.length) + " collapsed"}
+        </a>
+      </div>
+      <if(state.open)>
+        <ul class="flex flex-col space-y-2">
+          <for|comment| of=input.comment.comments>
+            <comment comment=comment child=true/>
+          </for>
+        </ul>
+      </if>
+    </if>
+  </div>
+</li>

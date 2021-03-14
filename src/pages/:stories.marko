@@ -1,0 +1,55 @@
+import { getStories } from "../lib/api"
+
+static function getPage(query) {
+  if (!query || !query.includes("page")) return 1;
+  return +query.split("=")[1];
+}
+
+$ const page = getPage(input.query);
+<app-layout>
+  <div class="px-4">
+    <await(getStories(input.params.stories || "top", page)) client-reorder>
+      <@then|stories|>
+        <div class="h-12 border-b flex justify-center items-center space-x-4">
+          <if(page > 1)>
+            <a
+              class="text-indigo-500 hover:text-indigo-600"
+              href=`${input.pathname}?page=${page - 1}`
+              aria-label="Previous Page">
+              < prev
+            </a>
+          </if>
+          <else>
+            <span class="text-indigo-500 cursor-default opacity-50" aria-hidden="true">
+              < prev
+            </span>
+          </else>
+          <span class="text-medium">page ${page}</span>
+          <if(stories.length === 30)>
+            <a
+              class="text-indigo-500 hover:text-indigo-600"
+              href=`${input.pathname}?page=${page + 1}`
+              aria-label="Next Page">
+              more >
+            </a>
+          </if>
+          <else>
+            <span class="text-indigo-500 cursor-default opacity-50" aria-hidden="true">
+              more >
+            </span>
+          </else>
+        </div>
+        <main class="py-4">
+          <ul class="flex flex-col space-y-4">
+            <for|story| of=stories>
+              <story story=story/>
+            </for>
+          </ul>
+        </main>
+      </@then>
+      <@placeholder>
+        <div class="flex justify-center items-center pt-12">Loading...</div>
+      </@placeholder>
+    </await>
+  </div>
+</app-layout>

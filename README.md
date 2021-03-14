@@ -1,23 +1,26 @@
-# Thanks for checking out Marko
+# Hacker News Marko
 
-# Installation
+[![Heroku](https://heroku-badge.herokuapp.com/?app=hackernews-marko)](https://yash-english-premier-league.herokuapp.com/)
 
-```
-npx @marko/create marko-app --template basic
-cd marko-app
-npm install
-npm run dev
-```
+This project is a demo of [Hacker News](https://news.ycombinator.com/) built with [MarkoJS](https://markojs.com/).
 
-## Overview
+## Table of contents
 
-This project is powered by `@marko/serve` and `@marko/build`.
+- [Installation](#installation)
+- [Usage](#usage)
 
-- Run `npm run dev` to start the development server
-- Run `npm run build` to build a production-ready node.js server
-- Run `npm start` to run the production server
+## Installation
 
-## Adding Pages
+1. `$ git clone https://github.com/yasharzolmajdi/hackernews-marko.git`
+1. `$ cd hackernews-marko`
+1. `$ npm install`
 
-Pages map to the directory structure. You can add additional pages by creating files/directories under `src/pages` with `.marko` files.  Learn more in the [`@marko/serve` docs](https://github.com/marko-js/cli/blob/master/packages/serve/README.md).
+## Usage
+### Production
 
+1. `$ npm run build`
+1. `$ npm run start`
+
+### Development
+
+1. `$ npm run dev`
